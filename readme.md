@@ -31,10 +31,10 @@ let fields = w1.getFormFields({
 console.log(fields)  // return sorted fields and signature too
 /* output
  [
-    { name: WMI_AUTO_LOCATION', value: '10' },
-    { name: WMI_CURRENCY_ID', value: '643' }     
+    { name: 'WMI_AUTO_LOCATION', value: '10' },
+    { name: 'WMI_CURRENCY_ID', value: '643' }     
     ... 
-    { name: WMI_SIGNATURE', value: 'hashhashhash' }
+    { name: 'WMI_SIGNATURE', value: 'hashhashhash' }
  ]
 */
 ```
