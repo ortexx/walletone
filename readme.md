@@ -10,7 +10,7 @@ const W1 = require("walletone");
 
 let defaultData = {
     WMI_SUCCESS_URL: 'http://example.com/success/',
-    WMI_FAIL_URL: 'http://example.com/fail/',,
+    WMI_FAIL_URL: 'http://example.com/fail/',
 };
 
 let secretKey = "keykeykey";
