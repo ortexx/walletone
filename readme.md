@@ -70,7 +70,7 @@ app.post('payments/notify/handler/', w1.notify(successHandler, errorHandler));
 ```
 
 # Description
-You can write custom notify handler, but library version includes data/signature validation and automatically send all headers in necessary format;
+You can write custom notify handler, but library version includes data/signature validation and automatically send all headers in necessary format
 
 # API
 ### .constructor(secretKey, merchantId, defaultData)
@@ -81,7 +81,7 @@ defaultData will be merged with other data in .getFormFields
 returns sorted data and signature in the array of objects
 
 ### .getSignature(data)
-returns data signature;
+returns data signature
 
 ### .checkSignature(data, siganture) or .checkSignature(data) // data includes WMI_SIGANTURE
 checks the validity of the signature 
@@ -94,7 +94,7 @@ meta type can be string or Error instance, if string then result is "OK" else "R
 returns w1 form action url
 
 ### .notify(fn, onError)
-w1 notify handler, it is "connect" middleware.
+w1 notify handler, it is "connect" middleware
 
 
 

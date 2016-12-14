@@ -1,6 +1,6 @@
 {
     "name": "walletone",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "Walletone payment module (walletone.com)",
     "main": "./index.js",
     "author": {
@@ -18,12 +18,12 @@
     "dependencies": {
         "iconv-lite": "*",
         "lodash": "*"
-    }, 
-	"repository" : { 
+    },
+	"repository" : {
 		"type" : "git",
 		"url" : "https://github.com/ortexx/walletone"
 	},
     "engines": {
         "node": ">=5.0.0"
-    }	
+    }
 }
