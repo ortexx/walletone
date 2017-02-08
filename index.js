@@ -4,7 +4,7 @@ const iconv = require('iconv-lite');
 const crypto = require('crypto');
 const _ = require('lodash');
 
-class Wallet {
+class WalletOne {
   constructor(key, merchantId, defaults) {
     if(typeof merchantId == "object") {
       defaults = merchantId;
@@ -31,13 +31,17 @@ class Wallet {
       b = b.toLowerCase();
 
       return a > b? 1: (a < b? -1: 0);
-    }
+    };
 
     Object.keys(data).sort(sortFn).map((name) => {
       let value = data[name];
 
-      if(name == "WMI_DESCRIPTION" && !name.match(/^BASE64:/)) {
+      if(name == "WMI_DESCRIPTION" && !((value + '').match(/^BASE64:/))) {
         value = 'BASE64:' + new Buffer(value).toString('base64')
+      }
+
+      if(name == "WMI_PAYMENT_AMOUNT") {
+        value = parseFloat(value).toFixed(2);
       }
 
       if (Array.isArray(value)) {
@@ -111,8 +115,8 @@ class Wallet {
       let meta;
 
       let ok = () => {
-        return res.send(this.answer());;
-      }
+        return res.send(this.answer());
+      };
 
       let fail = (err, meta) => {
         if(onError) {
@@ -120,8 +124,8 @@ class Wallet {
         }
 
         return res.send(this.answer(err));
-      }
-
+      };
+      
       if(!this.checkSignature(data)) {
         err = new Error('Wrong signature');
         meta = {
@@ -166,4 +170,4 @@ class Wallet {
   }
 }
 
-module.exports = Wallet;
+module.exports = WalletOne;

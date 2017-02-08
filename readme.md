@@ -55,7 +55,7 @@ const express = require('express');
 const app = express();
 
 let successHandler = (data, callback) => {
-    // data == req.body    
+    // data === req.body    
     // save payment info in db e.t.c    
     // callback() or return promise
 };
@@ -70,10 +70,10 @@ app.post('payments/notify/handler/', w1.notify(successHandler, errorHandler));
 ```
 
 # Description
-You can write custom notify handler, but library version includes data/signature validation and automatically send all headers in necessary format
+You can write custom notify handler, but library version includes data/signature validation and automatically send all headers in the necessary format
 
 # API
-### .constructor(secretKey, merchantId, defaultData)
+### .constructor(secretKey, merchantId, [defaultData])
 secretKey and merchantId you can find in your w1 account.  
 defaultData will be merged with other data in .getFormFields
 
@@ -83,12 +83,12 @@ returns sorted data and signature in the array of objects
 ### .getSignature(data)
 returns data signature
 
-### .checkSignature(data, siganture) or .checkSignature(data) // data includes WMI_SIGANTURE
+### .checkSignature(data, signature) or .checkSignature(data) // data includes WMI_SIGNATURE
 checks the validity of the signature 
 
 ### .answer(meta)
 returns answer in w1 format  
-meta type can be string or Error instance, if string then result is "OK" else "RETRY" 
+meta type can be string or Error instance, if it is string then result is "OK" else "RETRY" 
 
 ### .getPaymentUrl()
 returns w1 form action url
