@@ -28,7 +28,7 @@ let fields = w1.getFormFields({
     // ...and other options
 });
 
-console.log(fields)  // return sorted fields and signature too
+console.log(fields)  // returns sorted fields and signature too
 /* output
  [
     { name: 'WMI_AUTO_LOCATION', value: '10' },
@@ -49,7 +49,7 @@ console.log(fields)  // return sorted fields and signature too
 ```
 
 ```js
-// notify handler from walletone.com
+// notification handler from walletone.com
 
 const express = require('express');
 const app = express();
@@ -61,16 +61,16 @@ let successHandler = (data, callback) => {
 };
 
 let errorHandler = (err, meta) => {
-    // you can save to a file, db e.t.c.
+    // you can save something to a file, db e.t.c.
     // operation must be synchronous or in the background 
 };
 
-app.post('payments/notify/handler/', w1.notify(successHandler, errorHandler));
+app.post('payments/notification/', w1.notify(successHandler, errorHandler));
 
 ```
 
 # Description
-You can write custom notify handler, but library version includes data/signature validation and automatically send all headers in the necessary format
+You can write custom notification handler, but library version includes data/signature validation and automatically send all headers in the necessary format
 
 # API
 ### .constructor(secretKey, merchantId, [defaultData])
