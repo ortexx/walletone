@@ -20,7 +20,7 @@ class WalletOne {
   }
 
   getFormFields(data) {
-    data = _.merge(this.defaults, data)
+    data = _.merge({}, this.defaults, data);
     delete data.WMI_SIGNATURE;
 
     let fields = [];
@@ -35,14 +35,6 @@ class WalletOne {
 
     Object.keys(data).sort(sortFn).map((name) => {
       let value = data[name];
-
-      if(name == "WMI_DESCRIPTION" && !((value + '').match(/^BASE64:/))) {
-        value = 'BASE64:' + new Buffer(value).toString('base64')
-      }
-
-      if(name == "WMI_PAYMENT_AMOUNT") {
-        value = parseFloat(value).toFixed(2);
-      }
 
       if (Array.isArray(value)) {
         values += value.sort(sortFn).join('');

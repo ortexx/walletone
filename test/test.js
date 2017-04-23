@@ -12,16 +12,14 @@ describe('WalletOne:', function () {
   let w1 = new WalletOne(secretKey, merchantId);
 
   let data = {
-    WMI_PAYMENT_AMOUNT: '10',
+    WMI_PAYMENT_AMOUNT: '10.00',
     WMI_CURRENCY_ID: '643',
     WMI_DESCRIPTION: 'Recharge',
     WMI_CUSTOMER_EMAIL: 'user@example.com',
     WMI_AUTO_LOCATION: "1"
   };
 
-  let validSignature = 'DJPf9d3/6l9JqwTr8kJHdw==';
-  let validDescription = 'BASE64:UmVjaGFyZ2U=';
-  let validPayment = '10.00';
+  let validSignature = 'ZsGLBfvuiM/FgHqjKwcu/w==';
 
   describe('methods', function () {
     it('#getFormFields()', function() {
@@ -30,9 +28,9 @@ describe('WalletOne:', function () {
       assert.equal(fields[0].value, data.WMI_AUTO_LOCATION, 'invalid WMI_AUTO_LOCATION');
       assert.equal(fields[1].value, data.WMI_CURRENCY_ID, 'invalid WMI_CURRENCY_ID');
       assert.equal(fields[2].value, data.WMI_CUSTOMER_EMAIL, 'invalid WMI_CUSTOMER_EMAIL');
-      assert.equal(fields[3].value, validDescription, 'invalid WMI_DESCRIPTION');
+      assert.equal(fields[3].value, data.WMI_DESCRIPTION, 'invalid WMI_DESCRIPTION');
       assert.equal(fields[4].value, merchantId, 'invalid WMI_MERCHANT_ID');
-      assert.equal(fields[5].value, validPayment, 'invalid WMI_PAYMENT_AMOUNT');
+      assert.equal(fields[5].value, data.WMI_PAYMENT_AMOUNT, 'invalid WMI_PAYMENT_AMOUNT');
       assert.equal(fields[6].value, validSignature, 'invalid WMI_SIGNATURE');
     });
 

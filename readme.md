@@ -13,7 +13,7 @@ let defaultData = {
     WMI_FAIL_URL: 'http://example.com/fail/',
 };
 
-let secretKey = "keykeykey";
+let secretKey = "key";
 let merchantId = "000000001";
 
 const w1 = new W1(secretKey, merchantId, defaultData);
@@ -28,13 +28,13 @@ let fields = w1.getFormFields({
     // ...and other options
 });
 
-console.log(fields)  // returns sorted fields and signature too
+console.log(fields);  // returns sorted fields and signature too
 /* output
  [
     { name: 'WMI_AUTO_LOCATION', value: '10' },
     { name: 'WMI_CURRENCY_ID', value: '643' }     
     ... 
-    { name: 'WMI_SIGNATURE', value: 'hashhashhash' }
+    { name: 'WMI_SIGNATURE', value: 'hash' }
  ]
 */
 ```
