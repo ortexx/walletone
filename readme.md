@@ -5,7 +5,7 @@
 Walletone payment module (walletone.com)
 
 # Example
-## Sending to payment place
+## Sending to the payment place
 
 ```js
 const W1 = require("walletone");
