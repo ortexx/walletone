@@ -5,7 +5,7 @@
 Walletone payment module (walletone.com)
 
 # Example
-## Send to payment place
+## Sending to payment place
 
 ```js
 const W1 = require("walletone");
@@ -50,7 +50,7 @@ console.log(fields);  // returns sorted fields and signature too
 </form>
 ```
 
-## Handle notification
+## Handling a notification
 
 ```js
 const express = require('express');
