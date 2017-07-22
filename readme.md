@@ -77,6 +77,9 @@ You can write custom notification handler, but library version includes data/sig
 secretKey and merchantId you can find in your w1 account.  
 defaultData will be merged with other data in .getFormFields
 
+### .setAlgorithm(algo = "md5")
+set encryption algorithm ("md5" or "sha1")
+
 ### .getFormFields(data)
 returns sorted data and signature in the array of objects
 

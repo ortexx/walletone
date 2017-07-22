@@ -6,6 +6,8 @@ const _ = require('lodash');
 
 class WalletOne {
   constructor(key, merchantId, defaults) {
+    this.__algorithms = ['md5', 'sha1'];
+
     if(typeof merchantId == "object") {
       defaults = merchantId;
       merchantId = undefined;
@@ -17,6 +19,18 @@ class WalletOne {
     if(merchantId) {
       this.defaults.WMI_MERCHANT_ID = merchantId;
     }
+
+    this.algorithm = 'md5';
+  }
+
+  setAlgorithm(algo) {
+    algo = (algo + '').toLowerCase();
+
+    if(this.__algorithms.indexOf(algo) == -1) {
+      throw new Error('Wrong encryption algorithm');
+    }
+
+    this.algorithm = algo;
   }
 
   getFormFields(data) {
@@ -49,7 +63,7 @@ class WalletOne {
       }
     });
 
-    let signature = crypto.createHash('md5').update(iconv.encode(values + this.key, 'win1251')).digest('base64');
+    let signature = crypto.createHash(this.algorithm).update(iconv.encode(values + this.key, 'win1251')).digest('base64');
 
     fields.push({ name: "WMI_SIGNATURE", value: signature });
 

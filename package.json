@@ -1,6 +1,6 @@
 {
   "name": "walletone",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Walletone payment module (walletone.com)",
   "main": "./index.js",
   "author": {
