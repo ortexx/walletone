@@ -75,8 +75,11 @@ app.use('/notification', notifyRouter);
 ```
 
 # Description
-You can write custom notification handler, but library version includes data/signature validation and automatically send all headers in the necessary format
+You can write custom notification handler, but library version includes data/signature validation and automatically send all headers in the necessary format  
+
+
 We use [express-busboy](https://github.com/yahoo/express-busboy/) parser in the example above, because [body-parser](https://github.com/expressjs/body-parser/) is not able to handle charset windows-1251. Walletone uses this charset to send request.
+
 
 # API
 ### .constructor(secretKey, merchantId, [defaultData])
