@@ -5,6 +5,8 @@
 Walletone payment module (walletone.com)
 
 # Example
+## Send to payment place
+
 ```js
 const W1 = require("walletone");
 
@@ -48,11 +50,13 @@ console.log(fields);  // returns sorted fields and signature too
 </form>
 ```
 
-```js
-// notification handler from walletone.com
+## Handle notification
 
+```js
 const express = require('express');
+const busboy = require('express-busboy');
 const app = express();
+const notifyRouter = busboy.extend(express.Router());
 
 let successHandler = (data, callback) => {
     // data === req.body    
@@ -65,12 +69,14 @@ let errorHandler = (err, meta) => {
     // operation must be synchronous or in the background 
 };
 
-app.post('payments/notification/', w1.notify(successHandler, errorHandler));
+router.post('/', w1.notify(successHandler, errorHandler));
+app.use('/notification', notifyRouter);
 
 ```
 
 # Description
 You can write custom notification handler, but library version includes data/signature validation and automatically send all headers in the necessary format
+We use [express-busboy](https://github.com/yahoo/express-busboy/) parser in the example above, because [body-parser](https://github.com/expressjs/body-parser/) is not able to handle charset windows-1251. Walletone uses this charset to send request.
 
 # API
 ### .constructor(secretKey, merchantId, [defaultData])

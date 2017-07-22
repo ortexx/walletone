@@ -5,6 +5,7 @@ const WalletOne = require('../index');
 const express = require('express');
 const request = require('supertest');
 const bodyParser = require('body-parser');
+const busboy = require('express-busboy');
 
 describe('WalletOne:', function () {
   let merchantId = '1';
@@ -53,16 +54,18 @@ describe('WalletOne:', function () {
   describe('notification', function () {
     it('check signature error', function (done) {
       let app = express();
-      let error;
+      let router = busboy.extend(express.Router());
+      let error;     
 
-      app.use(bodyParser.json());
-
-      app.post('/notify', w1.notify(() => {}, (err, meta) => {
+      router.post('/', w1.notify(() => {}, (err, meta) => {
         (meta.reason != 'signature') && (error = new Error('signature error checking was failed'));
       }));
 
+      app.use('/notify', router);
+
       request(app)
         .post('/notify')
+        .set('Content-Type', 'application/x-www-form-urlencoded; charset=windows-1251')
         .send(data)
         .expect(() => {
           if(error) {
