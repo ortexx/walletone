@@ -69,7 +69,7 @@ let errorHandler = (err, meta) => {
     // operation must be synchronous or in the background 
 };
 
-router.post('/', w1.notify(successHandler, errorHandler));
+notifyRouter.post('/', w1.notify(successHandler, errorHandler));
 app.use('/notification', notifyRouter);
 
 ```
