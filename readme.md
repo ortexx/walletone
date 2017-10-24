@@ -30,7 +30,7 @@ let fields = w1.getFormFields({
     // ...and other options
 });
 
-console.log(fields);  // returns sorted fields and signature too
+console.log(fields);  // returns sorted fields and signature
 /* output
  [
     { name: 'WMI_AUTO_LOCATION', value: '10' },
