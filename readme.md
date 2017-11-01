@@ -71,7 +71,6 @@ let errorHandler = (err, meta) => {
 
 notifyRouter.post('/', w1.notify(successHandler, errorHandler));
 app.use('/notification', notifyRouter);
-
 ```
 
 # Description
