@@ -1,6 +1,6 @@
 {
   "name": "walletone",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Walletone payment module (walletone.com)",
   "main": "./index.js",
   "author": {
@@ -27,7 +27,7 @@
     "chai": "^3.5.0",
     "express": "^4.17.1",
     "express-busboy": "^6.0.1",
-    "mocha": "^6.2.1",
+    "mocha": "^7.1.1",
     "supertest": "^4.0.0"
   },
   "repository": {
