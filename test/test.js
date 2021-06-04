@@ -4,7 +4,6 @@ const assert = require('chai').assert;
 const WalletOne = require('../index');
 const express = require('express');
 const request = require('supertest');
-const bodyParser = require('body-parser');
 const busboy = require('express-busboy');
 
 describe('WalletOne:', function () {
@@ -80,7 +79,7 @@ describe('WalletOne:', function () {
       let error;
 
       data.WMI_SIGNATURE = validSignature;
-      app.use(bodyParser.json());
+      app.use(express.json());
 
       app.post('/notify', w1.notify(() => {}, (err, meta) => {
         (meta.reason != 'state') && (error = new Error('order state error checking was failed'));
@@ -103,7 +102,7 @@ describe('WalletOne:', function () {
       data.WMI_ORDER_STATE = 'accepted';
       data.WMI_SIGNATURE = w1.getSignature(data);
 
-      app.use(bodyParser.json());
+      app.use(express.json());
 
       app.post('/notify', w1.notify((body, callback) => {
         assert.equal(JSON.stringify(body), JSON.stringify(data));
@@ -120,7 +119,7 @@ describe('WalletOne:', function () {
     it('check success request with promise', function (done) {
       let app = express();
 
-      app.use(bodyParser.json());
+      app.use(express.json());
 
       app.post('/notify', w1.notify(() => {
         return Promise.resolve();
@@ -136,7 +135,7 @@ describe('WalletOne:', function () {
     it('check success request with callback error', function (done) {
       let app = express();
 
-      app.use(bodyParser.json());
+      app.use(express.json());
 
       app.post('/notify', w1.notify((body, callback) => {
         callback(new Error('success'));
@@ -152,7 +151,7 @@ describe('WalletOne:', function () {
     it('check success request with promise error', function (done) {
       let app = express();
 
-      app.use(bodyParser.json());
+      app.use(express.json());
 
       app.post('/notify', w1.notify(() => {
         return Promise.reject(new Error('success'));
